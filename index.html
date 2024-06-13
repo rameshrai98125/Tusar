@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="media.css" />
   </head>
   <body>
-    <div class="main w-full bg-zinc-900">
+    <div class="main w-full background">
       <!-- nav  -->
       <div
-        class="nav w-full fixed top-0 px-6 md:px-20 h-20 items-center flex justify-between bg-zinc-800 text-zinc-200 z-10"
+        class="nav w-full fixed top-0 px-6 md:px-20 h-20 items-center flex justify-between bg-zinc-500 text-zinc-200 z-10"
       >
         <div class="text-lg font-semibold">Logo</div>
         <div class="md:hidden">
           <button id="burger" class="focus:outline-none">
             <svg
-              class="w-6 h-6 text-zinc-200"
+              class="w-6 h-6 text-zinc-20"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -48,7 +48,7 @@
             </svg>
           </button>
         </div>
-        <div class="links hidden md:flex gap-10">
+        <div class="links hidden md:flex gap-10 items-center">
           <h4>
             <a
               class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
@@ -79,17 +79,24 @@
           </h4>
           <h4>
             <button
-              id="signInBtn"
-              class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
-            >
-              Sign In
-            </button>
+        id="openSignInModal"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Sign In
+      </button>
+      <button
+        id="openSignUpModal"
+        class="bg-green-500 text-white px-4 py-2 rounded ml-4"
+      >
+        Sign Up
+      </button>
+    </div>
           </h4>
         </div>
       </div>
       <div
         id="mobile-menu"
-        class="links fixed z-10 w-1/2 h-screen hidden flex-col gap-4 bg-zinc-900 px-6 py-10 md:hidden"
+        class="links fixed z-10 w-[60%] transition h-screen hidden flex-col gap-4 bg-zinc-600 px-6 py-10 md:hidden"
       >
         <h4>
           <a
@@ -120,115 +127,88 @@
           >
         </h4>
         <h4>
-          <button
-            id="signInBtn"
-            class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
-          >
-            Sign In
-          </button>
-        </h4>
-      </div>
-      <!-- The Modal -->
-      <div
-        id="signInModal"
-        class="modal hidden fixed z-10 inset-0 flex items-center justify-center bg-black bg-opacity-50"
-      >
-        <!-- Modal content -->
-        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-          <span class="close cursor-pointer text-gray-500 float-right text-2xl"
-            >&times;</span
-          >
-          <h2 class="text-2xl font-bold mb-4">Sign In</h2>
-          <form>
-            <div class="mb-4">
-              <label for="email" class="block text-gray-700">Email</label>
-              <input
-                type="email"
-                id="email"
-                class="w-full px-3 py-2 border rounded"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <label for="password" class="block text-gray-700">Password</label>
-              <input
-                type="password"
-                id="password"
-                class="w-full px-3 py-2 border rounded"
-                required
-              />
-            </div>
+          <div class="inline-block w-full mx-auto  mt-5">
             <button
-              type="submit"
-              class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
+              id="openSignInModal"
+              class="bg-blue-500 w-full text-white px-4 py-2 rounded"
             >
               Sign In
             </button>
-          </form>
-        </div>
+            <button
+              id="openSignUpModal"
+              class="bg-green-500 w-full text-white px-4 py-2 rounded my-5"
+            >
+              Sign Up
+            </button>
+          </div>
       </div>
+        </h4>
+      </div>
+     
 
-      <!-- <div
-        class="nav w-full fixed top-0 px-20 h-20 items-center flex justify-center"
-      >
-        <div class="links flex gap-10">
-          <h4>
-            <a
-              class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
-              href="#home"
-              >Home</a
-            >
-          </h4>
-          <h4>
-            <a
-              class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
-              href="#about"
-              >About us</a
-            >
-          </h4>
-          <h4>
-            <a
-              class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
-              href="#team"
-              >Team</a
-            >
-          </h4>
-          <h4>
-            <a
-              class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
-              href="#contact"
-              >Contact us</a
-            >
-          </h4>
-          <h4>
-            <a
-              class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
-              href="#"
-              >Sign up</a
-            >
-          </h4>
-          <h4>
-            <a
-              class="text-lg font-semibold text-zinc-200 hover:text-zinc-400"
-              href="#"
-            ></a>
-          </h4>
-        </div>
-      </div> -->
+      <!-- modal sign in and sign up  -->
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="modal modal-hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50" aria-labelledby="signInTitle" aria-hidden="true">
+      <div class="bg-white rounded-lg p-8 w-full max-w-md mx-4">
+          <h2 id="signInTitle" class="text-2xl font-bold mb-6">Sign In</h2>
+          <form id="signInForm">
+              <div class="mb-4">
+                  <label class="block mb-2" for="signInEmail">Email</label>
+                  <input type="email" id="signInEmail" class="w-full p-2 border rounded" required>
+              </div>
+              <div class="mb-6">
+                  <label class="block mb-2" for="signInPassword">Password</label>
+                  <input type="password" id="signInPassword" class="w-full p-2 border rounded" required>
+              </div>
+              <div class="flex justify-between items-center">
+                  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Sign In</button>
+                  <button type="button" id="closeSignInModal" class="text-gray-500">Cancel</button>
+              </div>
+          </form>
+      </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signUpModal" class="modal modal-hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50" aria-labelledby="signUpTitle" aria-hidden="true">
+      <div class="bg-white rounded-lg p-8 w-full max-w-md mx-4">
+          <h2 id="signUpTitle" class="text-2xl font-bold mb-6">Sign Up</h2>
+          <form id="signUpForm">
+              <div class="mb-4">
+                  <label class="block mb-2" for="signUpEmail">Email</label>
+                  <input type="email" id="signUpEmail" class="w-full p-2 border rounded" required>
+              </div>
+              <div class="mb-4">
+                  <label class="block mb-2" for="signUpPassword">Password</label>
+                  <input type="password" id="signUpPassword" class="w-full p-2 border rounded" required>
+              </div>
+              <div class="mb-6">
+                  <label class="block mb-2" for="confirmPassword">Confirm Password</label>
+                  <input type="password" id="confirmPassword" class="w-full p-2 border rounded" required>
+              </div>
+              <div class="flex justify-between items-center">
+                  <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Sign Up</button>
+                  <button type="button" id="closeSignUpModal" class="text-gray-500">Cancel</button>
+              </div>
+          </form>
+      </div>
+  </div>
+
+  <!-- home  -->
       <div
         id="home"
-        class="container relative w-full min-h-screen flex items-center px-4 md:px-20"
+        class="container mx-auto min-h-screen flex items-center px-4 md:px-20"
       >
-        <div
-          class="md:flex w-full h-full md:mx-auto justify-between pt-16 gap-12 md:gap-48"
-        >
+        <div class="md:flex w-full h-full items-start pt-16 gap-12 md:gap-48">
+          <!-- Form Section -->
           <div
-            class="center py-10 flex text-zinc-400 justify-center items-center gap-5 flex-col w-full md:w-[40%]"
+            class="py-10 flex text-zinc-900 text items-center gap-5 flex-col w-full md:w-2/5"
           >
             <div
-              class="dropdown-container w-full flex flex-col md:flex-row justify-between md:gap-4 lg:gap-20"
+              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-4 lg:gap-20"
             >
-              <label class="text-xl md:text-2xl font-semibold" for="course-type"
+              <label
+                class="text-xl whitespace-nowrap md:text-2xl font-semibold"
+                for="course-type"
                 >Course Type</label
               >
               <select
@@ -238,10 +218,11 @@
                 <option value="" disabled selected>Choose your option</option>
               </select>
             </div>
+
             <div
-              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-2 md:gap-4 lg:gap-20"
+              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-4 lg:gap-20"
             >
-              <label for="course" class="text-xl md:text-2xl font-semibold"
+              <label for="course" class="text-xl text md:text-2xl font-semibold"
                 >Courses</label
               >
               <select
@@ -251,8 +232,9 @@
                 <option value="" disabled selected>Choose your option</option>
               </select>
             </div>
+
             <div
-              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-2 md:gap-4 lg:gap-20"
+              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-4 lg:gap-20"
             >
               <label for="semester" class="text-xl md:text-2xl font-semibold"
                 >Semester</label
@@ -264,8 +246,9 @@
                 <option value="" disabled selected>Choose your option</option>
               </select>
             </div>
+
             <div
-              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-2 md:gap-4 lg:gap-20"
+              class="dropdown-container w-full flex flex-col md:flex-row justify-between gap-4 lg:gap-20"
             >
               <label for="subject" class="text-xl md:text-2xl font-semibold"
                 >Subject</label
@@ -294,22 +277,29 @@
             </div>
           </div>
 
-          <table
-            class="w-full md:w-1/2 border-2 border-zinc-600 table-auto"
-            id="data-table"
-            style="display: none"
-          >
-            <thead class="text-zinc-200">
-              <tr>
-                <th>Subject</th>
-                <th>Session</th>
-                <th>Download</th>
-              </tr>
-            </thead>
-            <tbody>
-              <td></td>
-            </tbody>
-          </table>
+          <!-- Table Section -->
+          <div class="w-full md:w-3/5">
+            <table
+              class="w-full border-2 border-zinc-600"
+              id="data-table"
+              style="display: none"
+            >
+              <thead class="text-zinc-900">
+                <tr>
+                  <th>Subject</th>
+                  <th>Session</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -329,12 +319,12 @@
             class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center"
           >
             <h1
-              class="title-font sm:text-4xl text-3xl mb-4 font-medium text-zinc-200"
+              class="title-font sm:text-4xl text-3xl mb-4 font-medium text-zinc-900"
             >
               About us
               <br class="hidden lg:inline-block" />
             </h1>
-            <p class="mb-8 leading-relaxed text-zinc-100">
+            <p class="mb-8 leading-relaxed text-zinc-800">
               Copper mug try-hard pitchfork pour-over freegan heirloom neutra
               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
               park mlkshk tote bag selvage hot chicken authentic tumeric
@@ -343,7 +333,7 @@
             <div class="flex justify-center">
               <a href="#contact">
                 <button
-                  class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  class="inline-flex text-zinc-900 font-semibold bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                 >
                   Contact us
                 </button>
@@ -353,10 +343,10 @@
         </div>
       </section>
       <!-- Team  -->
-      <section id="team" class="text-zinc-200 body-font md:px-20">
+      <section id="team" class="text-zinc-900 body-font md:px-20">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="text-2xl font-medium title-font mb-4 text-zinc-200">
+            <h1 class="text-4xl font-medium title-font mb-4 text-zinc-900">
               OUR TEAM
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
@@ -383,7 +373,7 @@
                     Exercitationem inventore aliquid minus.
                   </p>
                   <span class="inline-flex">
-                    <a href="#" class="text-gray-500">
+                    <a href="#" class="text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -398,7 +388,7 @@
                         ></path>
                       </svg>
                     </a>
-                    <a href="#" class="ml-2 text-gray-500">
+                    <a href="#" class="ml-2 text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -413,7 +403,7 @@
                         ></path>
                       </svg>
                     </a>
-                    <a href="#" class="ml-2 text-gray-500">
+                    <a href="#" class="ml-2 text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -450,7 +440,7 @@
                     Exercitationem inventore aliquid minus.
                   </p>
                   <span class="inline-flex">
-                    <a href="#" class="text-gray-500">
+                    <a href="#" class="text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -465,7 +455,7 @@
                         ></path>
                       </svg>
                     </a>
-                    <a href="#" class="ml-2 text-gray-500">
+                    <a href="#" class="ml-2 text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -480,7 +470,7 @@
                         ></path>
                       </svg>
                     </a>
-                    <a href="#" class="ml-2 text-gray-500">
+                    <a href="#" class="ml-2 text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -516,7 +506,7 @@
                     Exercitationem inventore aliquid minus.
                   </p>
                   <span class="inline-flex">
-                    <a href="#" class="text-gray-500">
+                    <a href="#" class="text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -531,7 +521,7 @@
                         ></path>
                       </svg>
                     </a>
-                    <a href="#" class="ml-2 text-gray-500">
+                    <a href="#" class="ml-2 text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -546,7 +536,7 @@
                         ></path>
                       </svg>
                     </a>
-                    <a href="#" class="ml-2 text-gray-500">
+                    <a href="#" class="ml-2 text-zinc-900">
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -570,11 +560,11 @@
       </section>
 
       <!-- contact  -->
-      <section id="contact" class="text-gray-600 body-font">
+      <section id="contact" class="text-zinc-900 body-font">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
             <h1
-              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-zinc-200"
+              class="sm:text-4xl text-4xl font-medium title-font mb-4 text-zinc-900"
             >
               Contact Us
             </h1>
@@ -587,7 +577,9 @@
             <div class="flex flex-wrap -m-2">
               <div class="p-2 w-1/2">
                 <div class="relative">
-                  <label for="name" class="leading-7 text-sm text-gray-600"
+                  <label
+                    for="name"
+                    class="leading-7 text-sm md:text-lg text-zinc-900"
                     >Name</label
                   >
                   <input
@@ -600,7 +592,9 @@
               </div>
               <div class="p-2 w-1/2">
                 <div class="relative">
-                  <label for="email" class="leading-7 text-sm text-gray-600"
+                  <label
+                    for="email"
+                    class="leading-7 text-sm md:text-lg text-zinc-900"
                     >Email</label
                   >
                   <input
@@ -613,7 +607,9 @@
               </div>
               <div class="p-2 w-full">
                 <div class="relative">
-                  <label for="message" class="leading-7 text-sm text-gray-600"
+                  <label
+                    for="message"
+                    class="leading-7 text-sm md:text-lg text-zinc-900"
                     >Message</label
                   >
                   <textarea
@@ -695,19 +691,19 @@
       </section>
 
       <!-- footer  -->
-      <footer class="text-zinc-200 body-font px-20">
+      <footer class="text-zinc-900 body-font px-20">
         <div
           class="w-full px-5 py-8 mx-auto flex items-center justify-between sm:flex-row flex-col"
         >
-          <span class="md:ml-3 ml-0 text-xl text-center">Students Data</span>
+          <span class="md:ml-3 ml-0 text-xl font-semibold text-center">Students Data</span>
 
           <p
-            class="text-sm flex items-center text-zinc-200 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-zinc-200 sm:py-0 sm:mt-2 my-2 md:my-0"
+            class="text-sm flex items-center text-zinc-900 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-zinc-200 sm:py-0 sm:mt-2 my-2 md:my-0"
           >
             © 2024 Students-Data —
             <a
               href="https://twitter.com/knyttneve"
-              class="text-zinc-200 ml-1"
+              class="text-zinc-800 ml-1"
               rel="noopener noreferrer"
               target="_blank"
               >@Tushar</a

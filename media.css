@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #6c6c6c;
+    --text-color: #262626;
+}
+
+.background {
+    background: var(--bg-color);
+}
+
+.text {
+    color: var(--text-color);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -26,5 +39,14 @@ body {
 }
 
 .modal {
-    display: none;
+    transition: opacity 0.25s ease;
+}
+
+.modal-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-visible {
+    opacity: 1;
 }

@@ -202,29 +202,69 @@ close.addEventListener("click", () => {
   close.classList.add("hidden");
 });
 
-// model
-// Get the modal
-var modal = document.getElementById("signInModal");
+// sign in and sign up modal
 
-// Get the button that opens the modal
-var btn = document.getElementById("signInBtn");
+function signInAndSignUp() {
+  document.addEventListener("DOMContentLoaded", function () {
+    const signInModal = document.getElementById("signInModal");
+    const signUpModal = document.getElementById("signUpModal");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    const openSignInModal = document.getElementById("openSignInModal");
+    const openSignUpModal = document.getElementById("openSignUpModal");
 
-// When the user clicks the button, open the modal
-btn.addEventListener("click", () => {
-  modal.style.display = "flex";
-});
+    const closeSignInModal = document.getElementById("closeSignInModal");
+    const closeSignUpModal = document.getElementById("closeSignUpModal");
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
+    function showModal(modal) {
+      modal.classList.remove("modal-hidden");
+      modal.classList.add("modal-visible");
+      modal.setAttribute("aria-hidden", "false");
+    }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+    function hideModal(modal) {
+      modal.classList.remove("modal-visible");
+      modal.classList.add("modal-hidden");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    openSignInModal.addEventListener("click", function () {
+      showModal(signInModal);
+    });
+
+    openSignUpModal.addEventListener("click", function () {
+      showModal(signUpModal);
+    });
+
+    closeSignInModal.addEventListener("click", function () {
+      hideModal(signInModal);
+    });
+
+    closeSignUpModal.addEventListener("click", function () {
+      hideModal(signUpModal);
+    });
+
+    window.addEventListener("click", function (event) {
+      if (event.target === signInModal) {
+        hideModal(signInModal);
+      }
+      if (event.target === signUpModal) {
+        hideModal(signUpModal);
+      }
+    });
+
+    // Form Validation
+    document
+      .getElementById("signUpForm")
+      .addEventListener("submit", function (event) {
+        const password = document.getElementById("signUpPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          event.preventDefault();
+        }
+      });
+  });
+}
+
+signInAndSignUp();
